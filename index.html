@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Montano - Trait, Behavioral, Social-Cognitive & Biological Approaches Study Guide</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        montanoBlue: '#1269A8',
+                        montanoYellow: '#F7D615',
+                        montanoTeal: '#54887D',
+                        montanoLightBlue: '#88B5C7',
+                        montanoOlive: '#A6B046',
+                        montanoSoftWhite: '#F2F5E9'
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'Segoe UI', 'Tahoma', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --montano-blue: #1269A8;
+            --montano-yellow: #F7D615;
+            --montano-teal: #54887D;
+            --montano-lightblue: #88B5C7;
+            --montano-olive: #A6B046;
+            --montano-softwhite: #F2F5E9;
+        }
+
+        body {
+            background-color: #E2E8F0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .whiteboard-frame {
+            background-color: #FFFFFF;
+            border: 12px solid #CBD5E1;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background-color: var(--montano-blue);
+            color: #FFFFFF;
+            border-bottom: 4px solid var(--montano-yellow);
+        }
+
+        .tab-btn:not(.active):hover {
+            background-color: #E2E8F0;
+            color: var(--montano-blue);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: var(--montano-lightblue);
+            border-radius: 4px;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .recording-pulse {
+            animation: pulse-ring 1.5s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="p-2 sm:p-4 min-h-screen">
+
+    <!-- Main Container / Whiteboard Frame -->
+    <div id="whiteboardContainer" class="whiteboard-frame max-w-7xl mx-auto min-h-[90vh] flex flex-col overflow-hidden">
+        
+        <!-- Institutional Header -->
+        <header class="bg-montanoSoftWhite border-b border-gray-300 p-4 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyEop0yf6lZ7Jk9MILZxF1rBj4Oqs5esyhIQ&s" 
+                     alt="Colegio Montano Logo" 
+                     class="h-14 w-auto object-contain rounded-md shadow-sm bg-white p-1"
+                     onerror="this.src='https://placehold.co/120x60/1269A8/FFFFFF?text=Colegio+Montano'">
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-extrabold text-montanoBlue leading-tight">COLEGIO MONTANO</h1>
+                    <p class="text-sm font-semibold text-montanoTeal">Psychology & Human Behavior | Unit 3 - Guide 5 (Grade 11 ESL B2/C1)</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <span class="bg-montanoOlive/20 text-montanoOlive font-bold text-xs px-3 py-1.5 rounded-full border border-montanoOlive/40">
+                    <i class="fa-solid fa-chart-pie mr-1"></i> Modern Personality Paradigms
+                </span>
+                <button onclick="toggleFullscreen()" title="Toggle Fullscreen" class="bg-montanoBlue hover:bg-sky-800 text-white font-bold p-2.5 rounded-xl shadow transition duration-200 flex items-center justify-center">
+                    <i id="fullscreenIcon" class="fa-solid fa-expand text-lg"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Topic Banner -->
+        <div class="bg-montanoBlue text-white px-6 py-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+            <div>
+                <h2 class="text-xl font-bold text-montanoYellow flex items-center gap-2">
+                    <i class="fa-solid fa-dna"></i> Trait, Behavioral, Social-Cognitive, and Biological Approaches
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-100">Big Five Dimensional Models, Reinforcement, Observational Learning, Expectations & Biological Contributions Without Determinism</p>
+            </div>
+            <div class="text-xs bg-white/10 px-3 py-1.5 rounded-lg border border-white/20">
+                <i class="fa-solid fa-earth-americas text-montanoYellow"></i> Target Level: B2 High - C1 (Advanced ESL)
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="bg-gray-100 border-b border-gray-300 flex overflow-x-auto custom-scrollbar font-bold text-xs sm:text-sm text-gray-600">
+            <button onclick="switchTab('tab1')" id="tab1-btn" class="tab-btn active px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-book-open"></i> 1. Theoretical Foundations
+            </button>
+            <button onclick="switchTab('tab2')" id="tab2-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-list-check"></i> 2. Solved Examples (15)
+            </button>
+            <button onclick="switchTab('tab3')" id="tab3-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-microphone-lines"></i> 3. Voice Simulator & Dashboard
+            </button>
+            <button onclick="switchTab('tab4')" id="tab4-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-comments"></i> 4. Critical Reflection
+            </button>
+            <button onclick="switchTab('tab5')" id="tab5-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-pen-to-square"></i> 5. Formative Evaluation (15)
+            </button>
+        </nav>
+
+        <!-- Content Body Area -->
+        <main class="p-4 sm:p-6 flex-grow bg-white overflow-y-auto custom-scrollbar">
+
+            <!-- TAB 1: THEORETICAL FOUNDATIONS -->
+            <section id="tab1" class="tab-content space-y-6">
+                <div class="border-l-4 border-montanoBlue bg-blue-50/50 p-4 rounded-r-xl">
+                    <h3 class="text-xl font-bold text-montanoBlue mb-1">Mapping Modern Personality Science</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Moving beyond historical typologies, modern scientific psychology evaluates personality through four major contemporary lenses: **Trait Theory** (measuring dimensional spectra like the Big Five), **Behavioral Theory** (reinforcement history), **Social-Cognitive Theory** (beliefs, expectations, and observational learning), and **Biological Approaches** (neurochemistry and heritability without genetic determinism).
+                    </p>
+                </div>
+
+                <!-- Section 1: Trait Theory & The Big Five (OCEAN) -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-bar text-montanoBlue"></i> 1. Trait Theory & The Big Five Model (OCEAN)
+                    </h4>
+                    <p class="text-xs sm:text-sm text-gray-600">
+                        Instead of putting people into rigid categories, trait theorists (Costa & McCrae) measure enduring behavioral predispositions along continuous dimensional scales (0% to 100%):
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                        <!-- Openness -->
+                        <div class="bg-blue-50 border border-blue-300 rounded-2xl p-3.5 space-y-2">
+                            <span class="text-[10px] font-bold bg-montanoBlue text-white px-2 py-0.5 rounded-full">O</span>
+                            <h5 class="font-bold text-gray-800 text-sm">Openness</h5>
+                            <p class="text-[11px] text-gray-600 leading-relaxed">Curiosity, creativity, preference for novelty vs. routine and predictability.</p>
+                        </div>
+                        <!-- Conscientiousness -->
+                        <div class="bg-teal-50 border border-teal-300 rounded-2xl p-3.5 space-y-2">
+                            <span class="text-[10px] font-bold bg-montanoTeal text-white px-2 py-0.5 rounded-full">C</span>
+                            <h5 class="font-bold text-gray-800 text-sm">Conscientiousness</h5>
+                            <p class="text-[11px] text-gray-600 leading-relaxed">Organization, self-discipline, goal-directedness vs. carelessness and impulsivity.</p>
+                        </div>
+                        <!-- Extraversion -->
+                        <div class="bg-amber-50 border border-amber-300 rounded-2xl p-3.5 space-y-2">
+                            <span class="text-[10px] font-bold bg-amber-600 text-white px-2 py-0.5 rounded-full">E</span>
+                            <h5 class="font-bold text-gray-800 text-sm">Extraversion</h5>
+                            <p class="text-[11px] text-gray-600 leading-relaxed">Sociability, assertiveness, energy from external crowds vs. solitude and reserve.</p>
+                        </div>
+                        <!-- Agreeableness -->
+                        <div class="bg-emerald-50 border border-emerald-300 rounded-2xl p-3.5 space-y-2">
+                            <span class="text-[10px] font-bold bg-emerald-600 text-white px-2 py-0.5 rounded-full">A</span>
+                            <h5 class="font-bold text-gray-800 text-sm">Agreeableness</h5>
+                            <p class="text-[11px] text-gray-600 leading-relaxed">Compassion, cooperativeness, trust vs. competitiveness and detachment.</p>
+                        </div>
+                        <!-- Neuroticism -->
+                        <div class="bg-rose-50 border border-rose-300 rounded-2xl p-3.5 space-y-2">
+                            <span class="text-[10px] font-bold bg-rose-600 text-white px-2 py-0.5 rounded-full">N</span>
+                            <h5 class="font-bold text-gray-800 text-sm">Neuroticism</h5>
+                            <p class="text-[11px] text-gray-600 leading-relaxed">Emotional instability, anxiety, vulnerability to stress vs. emotional resilience.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Behavioral & Social-Cognitive Views -->
+                <div class="space-y-4 pt-4 border-t border-gray-200">
+                    <h4 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-people-arrows text-montanoTeal"></i> 2. Behavioral & Social-Cognitive Approaches (Bandura)
+                    </h4>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-teal-50/60 border border-teal-300 rounded-2xl p-4 space-y-3">
+                            <h5 class="font-bold text-teal-900 text-base flex items-center gap-2">
+                                <i class="fa-solid fa-rotate-right text-teal-600"></i> Behavioral Perspective
+                            </h5>
+                            <p class="text-xs text-gray-700 leading-relaxed">
+                                Views personality strictly as a set of learned behavioral response patterns shaped through environmental **reinforcement** and **punishment** (Skinner & Watson). People do what has been rewarded in their past.
+                            </p>
+                        </div>
+
+                        <div class="bg-lime-50/60 border border-lime-300 rounded-2xl p-4 space-y-3">
+                            <h5 class="font-bold text-lime-900 text-base flex items-center gap-2">
+                                <i class="fa-solid fa-brain text-lime-600"></i> Social-Cognitive Perspective (Bandura)
+                            </h5>
+                            <ul class="text-xs text-gray-700 space-y-1.5 list-disc pl-4">
+                                <li><strong>Observational Learning:</strong> Learning by watching role models (vicarious reinforcement).</li>
+                                <li><strong>Reciprocal Determinism:</strong> Behavior, internal cognitive factors, and environmental influences constantly interact.</li>
+                                <li><strong>Self-Efficacy:</strong> A person's belief in their own capability to execute behaviors necessary to reach goals.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Biological Contributions WITHOUT Genetic Determinism -->
+                <div class="bg-montanoSoftWhite border-l-4 border-montanoOlive p-4 rounded-r-xl space-y-2">
+                    <h4 class="text-base font-bold text-montanoBlue flex items-center gap-2">
+                        <i class="fa-solid fa-dna text-montanoOlive"></i> 3. Biological Contributions: Heritability Without Genetic Determinism
+                    </h4>
+                    <p class="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                        Twin and adoption studies reveal that the Big Five traits have roughly 40% to 50% heritability. However, modern psychologists strongly reject **genetic determinism** (the belief that genes alone dictate destiny). Through **epigenetics** and environmental interaction, genetic baselines provide predispositions, but life experiences, choices, and culture shape how those traits manifest.
+                    </p>
+                </div>
+
+                <!-- Section 4: Comparative Fictional Analysis Matrix -->
+                <div class="space-y-3">
+                    <h4 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-masks-theater text-montanoBlue"></i> 4. Comparing Approaches: Fictional Character Analysis
+                    </h4>
+                    <p class="text-xs sm:text-sm text-gray-600">
+                        Consider a fictional protagonist who demonstrates bravery and perseverance in dangerous situations:
+                    </p>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm border-collapse rounded-xl overflow-hidden shadow-sm">
+                            <thead>
+                                <tr class="bg-montanoBlue text-white">
+                                    <th class="p-3">Psychological Approach</th>
+                                    <th class="p-3">Core Analytical Focus</th>
+                                    <th class="p-3">Explanation of Character's Bravery</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 bg-gray-50 text-xs sm:text-sm">
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoBlue">Trait Theory (Big Five)</td>
+                                    <td class="p-3 text-slate-800">Dimensional measurement of OCEAN traits</td>
+                                    <td class="p-3 text-slate-700">High Conscientiousness and low Neuroticism scores across all situations.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoTeal">Behavioral Theory</td>
+                                    <td class="p-3 text-teal-800">Reinforcement history & conditioning</td>
+                                    <td class="p-3 text-teal-700">Courageous acts were repeatedly praised and rewarded in the character's past.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoOlive">Social-Cognitive Theory</td>
+                                    <td class="p-3 text-olive-800">Self-efficacy & observational learning</td>
+                                    <td class="p-3 text-olive-700">High self-efficacy beliefs and having watched heroic role models (vicarious learning).</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-indigo-700">Biological Approach</td>
+                                    <td class="p-3 text-indigo-900">Neurochemical baseline & heritability</td>
+                                    <td class="p-3 text-indigo-800">Balanced amygdala reactivity and optimal dopamine/serotonin baselines.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: SOLVED EXAMPLES (15 EXAMPLES) -->
+            <section id="tab2" class="tab-content hidden space-y-6">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <div>
+                        <h3 class="text-xl font-bold text-montanoBlue">15 Solved & Categorized Paradigm Examples</h3>
+                        <p class="text-xs text-gray-500">Listen to native audio explanations using the speaker button.</p>
+                    </div>
+                    <span class="text-xs font-semibold bg-montanoYellow/30 text-yellow-800 px-3 py-1 rounded-full border border-montanoYellow">
+                        <i class="fa-solid fa-volume-high"></i> Text-to-Speech Ready
+                    </span>
+                </div>
+
+                <!-- Level 1: Basic Examples -->
+                <div class="space-y-4">
+                    <h4 class="text-md font-bold text-white bg-montanoBlue px-4 py-2 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-seedling"></i> Level 1: Basic Trait & Paradigm Identification (Examples 1 - 5)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="basicExamplesGrid"></div>
+                </div>
+
+                <!-- Level 2: Intermediate Examples -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-md font-bold text-white bg-montanoTeal px-4 py-2 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group"></i> Level 2: Behavioral & Social-Cognitive Scenarios (Examples 6 - 10)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="intermediateExamplesGrid"></div>
+                </div>
+
+                <!-- Level 3: Advanced Examples -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-md font-bold text-white bg-montanoOlive px-4 py-2 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-brain"></i> Level 3: Advanced Biological Interplay & Paradigm Comparisons (Examples 11 - 15)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="advancedExamplesGrid"></div>
+                </div>
+            </section>
+
+            <!-- TAB 3: LIVE VOICE SIMULATOR & DASHBOARD -->
+            <section id="tab3" class="tab-content hidden space-y-6">
+                <div class="bg-gradient-to-r from-montanoBlue to-sky-900 text-white p-6 rounded-2xl shadow-md">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <span class="bg-montanoYellow text-gray-900 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Paradigm Simulator Lab</span>
+                            <h3 class="text-2xl font-bold mt-1">Live Multi-Approach Speech Evaluator</h3>
+                            <p class="text-xs sm:text-sm text-sky-100">Practice explaining the Big Five, social-cognitive self-efficacy, or biological heritability via voice input. Real-time metric feedback.</p>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl border border-white/20">
+                            <i class="fa-solid fa-robot text-montanoYellow text-xl"></i>
+                            <span class="text-xs font-semibold">AI Evaluator Active</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Speech Simulator Interface -->
+                    <div class="lg:col-span-7 bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4 flex flex-col justify-between">
+                        
+                        <!-- Scenario Prompt Box -->
+                        <div class="bg-montanoSoftWhite border-l-4 border-montanoBlue p-4 rounded-r-xl">
+                            <span class="text-xs font-bold text-montanoBlue uppercase">Current Paradigm Prompt</span>
+                            <p id="simPrompt" class="text-sm font-semibold text-gray-800 mt-1">
+                                "Explain how Bandura's concept of self-efficacy differs from strict behavioral reinforcement history."
+                            </p>
+                            <button onclick="newSimPrompt()" class="mt-2 text-xs text-montanoBlue hover:underline font-bold flex items-center gap-1">
+                                <i class="fa-solid fa-rotate"></i> Change Prompt
+                            </button>
+                        </div>
+
+                        <!-- Audio Output of AI Character -->
+                        <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-montanoBlue flex items-center justify-center text-white font-bold text-lg">
+                                Dr.M
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-xs text-gray-500 font-bold">Dr. Montano (AI Instructor):</p>
+                                <p id="aiResponseText" class="text-xs text-gray-700 italic">"Click the microphone or type below. I am ready to evaluate your personality approach explanation."</p>
+                            </div>
+                            <button onclick="speakAIResponse()" class="bg-montanoBlue/10 text-montanoBlue p-2 rounded-lg hover:bg-montanoBlue/20">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+
+                        <!-- User Input Section -->
+                        <div class="space-y-3">
+                            <label class="block text-xs font-bold text-gray-600 uppercase">Your Spoken or Written Response:</label>
+                            
+                            <div class="relative">
+                                <textarea id="speechTransmittedText" rows="3" 
+                                    class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoBlue focus:outline-none custom-scrollbar"
+                                    placeholder="Click the microphone and speak, or type your response here..."></textarea>
+                                
+                                <span id="recordingBadge" class="hidden absolute top-3 right-3 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full recording-pulse flex items-center gap-1">
+                                    <i class="fa-solid fa-circle"></i> LISTENING
+                                </span>
+                            </div>
+
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <button id="micBtn" onclick="toggleSpeechRecognition()" 
+                                    class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2.5 rounded-xl shadow text-xs sm:text-sm flex items-center gap-2 transition">
+                                    <i class="fa-solid fa-microphone text-base"></i>
+                                    <span id="micBtnText">Start Speaking</span>
+                                </button>
+
+                                <button onclick="evaluateSpeechInput()" 
+                                    class="bg-montanoBlue hover:bg-sky-800 text-white font-bold px-6 py-2.5 rounded-xl shadow text-xs sm:text-sm flex items-center gap-2 transition">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> Evaluate Response
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Performance Dashboard -->
+                    <div class="lg:col-span-5 bg-gray-50 border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4">
+                        <h4 class="text-md font-bold text-gray-800 border-b pb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-montanoBlue"></i> Live Performance Dashboard
+                        </h4>
+
+                        <!-- Metric 1: Pronunciation & Speech Clarity -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-gray-700">Pronunciation & Speech Clarity</span>
+                                <span id="scorePronunciationText" class="text-montanoBlue">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="barPronunciation" class="bg-montanoBlue h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 2: Topic / Grammar Accuracy -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-gray-700">Topic & Academic Vocabulary Accuracy</span>
+                                <span id="scoreAccuracyText" class="text-montanoTeal">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="barAccuracy" class="bg-montanoTeal h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 3: Politeness / Expression Etiquette -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-gray-700">Academic Etiquette & Discourse</span>
+                                <span id="scoreEtiquetteText" class="text-montanoOlive">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="barEtiquette" class="bg-montanoOlive h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Detected Key Terms Container -->
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-gray-600 block">Detected Psychological Terms:</span>
+                            <div id="keywordBadgeContainer" class="flex flex-wrap gap-1.5 min-h-[40px] p-2 bg-white rounded-xl border border-gray-200">
+                                <span class="text-xs text-gray-400 italic">No keywords detected yet...</span>
+                            </div>
+                        </div>
+
+                        <!-- AI Feedback Box -->
+                        <div class="bg-white p-3.5 rounded-xl border border-gray-200 space-y-1">
+                            <span class="text-xs font-bold text-montanoBlue flex items-center gap-1">
+                                <i class="fa-solid fa-lightbulb text-montanoYellow"></i> AI Pedagogical Feedback
+                            </span>
+                            <p id="aiPedagogicalFeedback" class="text-xs text-gray-600 leading-relaxed">
+                                Speak or type your answer above to receive constructive feedback on your mastery of trait, behavioral, social-cognitive, and biological perspectives.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: CRITICAL REFLECTION QUESTIONS -->
+            <section id="tab4" class="tab-content hidden space-y-6">
+                <div class="border-l-4 border-montanoTeal bg-teal-50/50 p-4 rounded-r-xl">
+                    <h3 class="text-xl font-bold text-montanoTeal">Critical Reflection & Practical Application</h3>
+                    <p class="text-sm text-gray-600">Formulate high-level analytical answers (B2-C1 ESL syntax). Write your arguments into the textareas below and save your responses.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Reflection 1 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-3">
+                        <label class="block font-bold text-gray-800 text-sm sm:text-base">
+                            1. How do the Big Five trait dimensions manifest in your daily academic and social life? Select two traits (e.g., Conscientiousness or Extraversion) and explain how they influence your study habits.
+                        </label>
+                        <textarea id="refl1" rows="3" class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoTeal focus:outline-none" placeholder="Write your personal reflection here..."></textarea>
+                    </div>
+
+                    <!-- Reflection 2 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-3">
+                        <label class="block font-bold text-gray-800 text-sm sm:text-base">
+                            2. Contrast genetic predispositions with genetic determinism. Why do twin studies showing 50% heritability not mean that a person's behavior is completely fixed by their DNA?
+                        </label>
+                        <textarea id="refl2" rows="3" class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoTeal focus:outline-none" placeholder="Write your critical analysis here..."></textarea>
+                    </div>
+
+                    <!-- Reflection 3 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-3">
+                        <label class="block font-bold text-gray-800 text-sm sm:text-base">
+                            3. Select a fictional character or public figure and compare how a behavioral psychologist vs. a social-cognitive psychologist (Bandura) would explain their success.
+                        </label>
+                        <textarea id="refl3" rows="3" class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoTeal focus:outline-none" placeholder="Write your comparative synthesis here..."></textarea>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button onclick="saveReflections()" class="bg-montanoTeal hover:bg-teal-700 text-white font-bold px-6 py-2.5 rounded-xl shadow text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-floppy-disk"></i> Save Reflections
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: FORMATIVE EVALUATION (15 PROBLEMS) -->
+            <section id="tab5" class="tab-content hidden space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b pb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-montanoBlue">15 Formative Evaluation Exercises</h3>
+                        <p class="text-xs text-gray-500">Test your understanding of the Big Five, behavioral conditioning, social-cognitive theory, and biological approaches.</p>
+                    </div>
+                    <span class="bg-montanoOlive/20 text-montanoOlive font-bold text-xs px-3 py-1 rounded-full border border-montanoOlive">
+                        15 Interactive Toggles
+                    </span>
+                </div>
+
+                <!-- Level 1 Formative Exercises -->
+                <div class="space-y-4">
+                    <h4 class="text-sm font-extrabold text-montanoBlue bg-blue-50 border-l-4 border-montanoBlue p-3 rounded-r-lg">
+                        LEVEL 1: BASIC BIG FIVE & PARADIGM IDENTIFICATION (EXERCISES 1 - 5)
+                    </h4>
+                    <div class="space-y-3" id="evalLevel1Container"></div>
+                </div>
+
+                <!-- Level 2 Formative Exercises -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-sm font-extrabold text-montanoTeal bg-teal-50 border-l-4 border-montanoTeal p-3 rounded-r-lg">
+                        LEVEL 2: BEHAVIORAL & SOCIAL-COGNITIVE SCENARIOS (EXERCISES 6 - 10)
+                    </h4>
+                    <div class="space-y-3" id="evalLevel2Container"></div>
+                </div>
+
+                <!-- Level 3 Formative Exercises -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-sm font-extrabold text-montanoOlive bg-lime-50 border-l-4 border-montanoOlive p-3 rounded-r-lg">
+                        LEVEL 3: ADVANCED BIOLOGICAL HERITABILITY & CRITIQUE (EXERCISES 11 - 15)
+                    </h4>
+                    <div class="space-y-3" id="evalLevel3Container"></div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Institutional Footer -->
+        <footer class="bg-montanoSoftWhite border-t border-gray-300 px-6 py-3 text-xs text-gray-600 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div>
+                <span class="font-bold text-montanoBlue">Colegio Montano</span> &copy; 2026 - Educational Technology Department
+            </div>
+            <div class="flex items-center space-x-4">
+                <span>Grade 11 - Psychology</span>
+                <span>•</span>
+                <span>Unit 3: Guide 5</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-gray-900 text-white text-xs px-4 py-3 rounded-xl shadow-xl hidden transition-all z-50 flex items-center gap-2">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toastMsg">Action completed successfully.</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        /* --------------------------------------------------
+           DATA: 15 SOLVED EXAMPLES
+        -------------------------------------------------- */
+        const solvedExamplesData = [
+            // Level 1: Basic
+            {
+                id: 1, level: 1,
+                title: "Identifying Conscientiousness",
+                category: "Trait Theory (Big Five)",
+                scenario: "A student meticulously plans their weekly study schedule, keeps their desk organized, and never misses homework deadlines.",
+                explanation: "Exemplifies high **Conscientiousness**. This trait involves organization, dependability, and self-discipline."
+            },
+            {
+                id: 2, level: 1,
+                title: "Identifying Neuroticism",
+                category: "Trait Theory (Big Five)",
+                scenario: "An individual experiences intense worry and emotional reactivity over minor schedule delays.",
+                explanation: "Demonstrates high **Neuroticism** (emotional instability and vulnerability to stress)."
+            },
+            {
+                id: 3, level: 1,
+                title: "Behavioral Reinforcement Example",
+                category: "Behavioral Approach",
+                scenario: "A child cleans their room because parents consistently reward them with allowance money.",
+                explanation: "Reflects the **Behavioral Perspective**. Behavior is shaped strictly through external reinforcement history."
+            },
+            {
+                id: 4, level: 1,
+                title: "Observational Learning (Bandura)",
+                category: "Social-Cognitive",
+                scenario: "A teenager adopts a calm conflict-resolution style after watching how their older sibling successfully handles arguments.",
+                explanation: "Illustrates **Observational Learning** (vicarious learning through role models)."
+            },
+            {
+                id: 5, level: 1,
+                title: "Twin Study Heritability",
+                category: "Biological Approach",
+                scenario: "Identical twins raised in separate households both score similarly on measures of extraversion.",
+                explanation: "Highlights **Biological Heritability**. Genetic predisposition accounts for a significant baseline variance in personality traits."
+            },
+            // Level 2: Intermediate
+            {
+                id: 6, level: 2,
+                title: "Reciprocal Determinism in Action",
+                category: "Social-Cognitive",
+                scenario: "A student's confident attitude (Cognition) leads them to ask questions in class (Behavior), prompting the teacher to provide extra support (Environment).",
+                explanation: "Demonstrates **Reciprocal Determinism**: Behavior, internal cognition, and environment continuously influence each other."
+            },
+            {
+                id: 7, level: 2,
+                title: "Self-Efficacy in Academic Success",
+                category: "Social-Cognitive",
+                scenario: "Even after failing a mock test, a student believes in their ability to master the material through hard work and studies harder.",
+                explanation: "Reflects high **Self-Efficacy** (belief in one's capability to execute required actions)."
+            },
+            {
+                id: 8, level: 2,
+                title: "Rejecting Genetic Determinism",
+                category: "Biological Approach",
+                scenario: "A person with a genetic predisposition to high reactivity learns mindfulness techniques to maintain emotional calm.",
+                explanation: "Proves that genes are not destiny; **environmental intervention and personal choice** can modify biological baselines."
+            },
+            {
+                id: 9, level: 2,
+                title: "Openness to Experience in Arts",
+                category: "Trait Theory (Big Five)",
+                scenario: "An architect constantly experiments with unconventional building materials and abstract artistic designs.",
+                explanation: "Reflects high **Openness to Experience** (curiosity, imagination, and preference for variety)."
+            },
+            {
+                id: 10, level: 2,
+                title: "Agreeableness in Teamwork",
+                category: "Trait Theory (Big Five)",
+                scenario: "A group member patiently listens to conflicting ideas and works to ensure everyone feels included and valued.",
+                explanation: "Demonstrates high **Agreeableness** (compassion, cooperativeness, and trust)."
+            },
+            // Level 3: Advanced
+            {
+                id: 11, level: 3,
+                title: "Cross-Cultural Stability of the Big Five",
+                category: "Trait Research",
+                scenario: "Studies across 50 different countries find that the Big Five trait structure replicates reliably worldwide.",
+                explanation: "Suggests that the Big Five dimensions reflect fundamental, biologically rooted human universals rather than Western cultural artifacts."
+            },
+            {
+                id: 12, level: 3,
+                title: "Epigenetic Modification of Traits",
+                category: "Biological Approach",
+                scenario: "Chronic early childhood stress alters gene expression related to stress hormone receptors, influencing lifelong emotional reactivity.",
+                explanation: "Demonstrates **Epigenetics**: Environmental factors modify how genes are expressed without changing the underlying DNA sequence."
+            },
+            {
+                id: 13, level: 3,
+                title: "Behavioral vs. Social-Cognitive Critique",
+                category: "Paradigm Comparison",
+                scenario: "Why do social-cognitive theorists criticize strict behaviorism?",
+                explanation: "Behaviorism ignores internal mental processes (beliefs, expectations, thoughts), treating humans like passive automata."
+            },
+            {
+                id: 14, level: 3,
+                title: "Stability of Traits Across Adulthood",
+                category: "Trait Theory",
+                scenario: "Longitudinal data shows that relative trait rankings remain remarkably stable from age 30 to 70.",
+                explanation: "Supports Costa and McCrae's view that Big Five personality traits become biologically entrenched in adulthood."
+            },
+            {
+                id: 15, level: 3,
+                title: "Comprehensive Synthesis of All 4 Approaches",
+                category: "Unit Synthesis",
+                scenario: "How do modern psychologists integrate trait, behavioral, social-cognitive, and biological findings?",
+                explanation: "They recognize that biology and traits provide baseline predispositions, while social-cognitive beliefs and behavioral conditioning shape active expression."
+            }
+        ];
+
+        /* --------------------------------------------------
+           DATA: 15 FORMATIVE EVALUATION EXERCISES
+        -------------------------------------------------- */
+        const evaluationExercisesData = [
+            // Level 1 (1 - 5)
+            {
+                id: 1, level: 1,
+                question: "Identify Trait: Which Big Five trait measures organization, dependability, and self-discipline?",
+                solution: "Answer: Conscientiousness."
+            },
+            {
+                id: 2, level: 1,
+                question: "Identify Paradigm: Who proposed the Social-Cognitive theory featuring reciprocal determinism and observational learning?",
+                solution: "Answer: Albert Bandura."
+            },
+            {
+                id: 3, level: 1,
+                question: "Define Term: What is the term for a person's belief in their own capability to succeed at a specific task?",
+                solution: "Answer: Self-Efficacy."
+            },
+            {
+                id: 4, level: 1,
+                question: "Identify Trait: Which Big Five trait measures emotional instability, anxiety, and vulnerability to stress?",
+                solution: "Answer: Neuroticism."
+            },
+            {
+                id: 5, level: 1,
+                question: "Biological Concept: What term describes the belief that genes completely dictate personality with no environmental modification?",
+                solution: "Answer: Genetic Determinism (which modern psychologists reject in favor of gene-environment interaction)."
+            },
+            // Level 2 (6 - 10)
+            {
+                id: 6, level: 2,
+                question: "Scenario Analysis: A student studies hard because they expect to earn an A and value academic praise. What theory explains this?",
+                solution: "Solution: Social-Cognitive Theory (focusing on expectations, cognitive goals, and reinforcement value)."
+            },
+            {
+                id: 7, level: 2,
+                question: "Contrast Perspectives: How does the Behavioral approach explain personality compared to Trait theory?",
+                solution: "Solution: Behavioral theory views personality as learned response habits shaped by environmental reinforcement; Trait theory views it as stable internal biological predispositions."
+            },
+            {
+                id: 8, level: 2,
+                question: "Reciprocal Determinism: Give an example of how behavior influences the environment in Bandura's model.",
+                solution: "Solution: Being friendly (behavior) prompts others to smile back and include you (environment)."
+            },
+            {
+                id: 9, level: 2,
+                question: "Identify Trait: A person who loves traveling to foreign countries, trying exotic foods, and exploring abstract art scores high on which Big Five trait?",
+                solution: "Solution: Openness to Experience."
+            },
+            {
+                id: 10, level: 2,
+                question: "Twin Studies: What do twin studies reveal about the heritability of personality traits in the Big Five model?",
+                solution: "Solution: They show roughly 40% to 50% heritability, indicating substantial genetic influence alongside environmental factors."
+            },
+            // Level 3 (11 - 15)
+            {
+                id: 11, level: 3,
+                question: "Critical Critique: Why is 'genetic determinism' considered scientifically inaccurate in modern behavioral genetics?",
+                solution: "Solution: Because epigenetics and environmental interactions show that genes provide probabilistic predispositions, not fixed outcomes."
+            },
+            {
+                id: 12, level: 3,
+                question: "Methodological Evaluation: Why are dimensional models (Big Five) scientifically preferred over ancient typologies?",
+                solution: "Solution: Dimensional models measure traits along continuous probability bell-curves rather than forcing individuals into rigid, inaccurate binary boxes."
+            },
+            {
+                id: 13, level: 3,
+                question: "Case Evaluation: A child raised in an aggressive home learns to solve conflicts aggressively through observational learning. Whose theory explains this best?",
+                solution: "Solution: Albert Bandura's Social-Learning / Social-Cognitive theory (vicarious learning and role modeling)."
+            },
+            {
+                id: 14, level: 3,
+                question: "Synthesis Question: How do biological predispositions interact with social-cognitive self-efficacy to shape career choices?",
+                solution: "Solution: Biological traits (like extraversion or cognitive ability) provide baseline aptitudes, while self-efficacy beliefs determine whether a person pursues and persists in those fields."
+            },
+            {
+                id: 15, level: 3,
+                question: "Advanced Problem: Can an adult intentionally change their standing on a Big Five trait (e.g., increasing Conscientiousness)? Explain.",
+                solution: "Solution: Yes. While traits have biological stability, intentional behavioral interventions, habit training, and social-cognitive goal-setting can shift behavioral patterns over time."
+            }
+        ];
+
+        /* --------------------------------------------------
+           TAB SWITCHING & FULLSCREEN LOGIC
+        -------------------------------------------------- */
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(`${tabId}-btn`).classList.add('active');
+        }
+
+        function toggleFullscreen() {
+            const container = document.getElementById('whiteboardContainer');
+            const icon = document.getElementById('fullscreenIcon');
+            
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                }
+                icon.classList.remove('fa-expand');
+                icon.classList.add('fa-compress');
+                showToast("Entered Fullscreen Digital Whiteboard Mode");
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+                icon.classList.remove('fa-compress');
+                icon.classList.add('fa-expand');
+                showToast("Exited Fullscreen Mode");
+            }
+        }
+
+        /* --------------------------------------------------
+           TAB 2: SOLVED EXAMPLES RENDERING & TTS
+        -------------------------------------------------- */
+        function renderSolvedExamples() {
+            const basicGrid = document.getElementById('basicExamplesGrid');
+            const interGrid = document.getElementById('intermediateExamplesGrid');
+            const advGrid = document.getElementById('advancedExamplesGrid');
+
+            solvedExamplesData.forEach(ex => {
+                const cardHtml = `
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:border-montanoBlue transition flex flex-col justify-between space-y-3">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full text-white bg-montanoBlue">
+                                    Example ${ex.id} • ${ex.category}
+                                </span>
+                                <button onclick="speakText('${escapeQuotes(ex.scenario)}')" title="Listen to example" class="text-montanoBlue hover:text-sky-800 p-1.5 rounded-lg bg-sky-50">
+                                    <i class="fa-solid fa-volume-high text-sm"></i>
+                                </button>
+                            </div>
+                            <h5 class="font-bold text-gray-800 text-sm mb-1">${ex.title}</h5>
+                            <p class="text-xs text-gray-600 bg-gray-50 p-2.5 rounded-lg border border-gray-100 mb-2 italic">
+                                "${ex.scenario}"
+                            </p>
+                        </div>
+                        <div class="text-xs text-gray-700 bg-blue-50/60 p-2.5 rounded-lg border-l-2 border-montanoBlue">
+                            <strong>Analysis:</strong> ${ex.explanation}
+                        </div>
+                    </div>
+                `;
+
+                if (ex.level === 1) basicGrid.innerHTML += cardHtml;
+                else if (ex.level === 2) interGrid.innerHTML += cardHtml;
+                else if (ex.level === 3) advGrid.innerHTML += cardHtml;
+            });
+        }
+
+        function escapeQuotes(str) {
+            return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+                showToast("Playing Text-to-Speech audio...");
+            } else {
+                showToast("TTS not supported in this browser environment.", "error");
+            }
+        }
+
+        /* --------------------------------------------------
+           TAB 3: SPEECH SIMULATOR & RECOGNITION & DASHBOARD
+        -------------------------------------------------- */
+        const simPromptsList = [
+            "Explain how Bandura's concept of self-efficacy differs from strict behavioral reinforcement history.",
+            "Describe the Big Five dimensional model (OCEAN) and explain why dimensional models are preferred over binary typing.",
+            "Discuss biological contributions to personality while explicitly refuting genetic determinism.",
+            "Compare how a behavioral psychologist versus a social-cognitive psychologist would explain a student's academic motivation."
+        ];
+        let currentPromptIdx = 0;
+
+        function newSimPrompt() {
+            currentPromptIdx = (currentPromptIdx + 1) % simPromptsList.length;
+            document.getElementById('simPrompt').innerText = `"${simPromptsList[currentPromptIdx]}"`;
+            showToast("New simulation prompt loaded");
+        }
+
+        let recognition = null;
+        let isRecording = false;
+
+        function initSpeechRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (SpeechRecognition) {
+                recognition = new SpeechRecognition();
+                recognition.continuous = false;
+                recognition.lang = 'en-US';
+                recognition.interimResults = false;
+
+                recognition.onstart = function() {
+                    isRecording = true;
+                    document.getElementById('recordingBadge').classList.remove('hidden');
+                    document.getElementById('micBtnText').innerText = "Listening... Click to Stop";
+                    document.getElementById('micBtn').classList.replace('bg-rose-600', 'bg-amber-600');
+                };
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('speechTransmittedText').value = transcript;
+                    showToast("Speech captured successfully!");
+                };
+
+                recognition.onerror = function(event) {
+                    showToast("Speech recognition error: " + event.error, "error");
+                    stopRecordingState();
+                };
+
+                recognition.onend = function() {
+                    stopRecordingState();
+                };
+            } else {
+                console.warn("Speech Recognition API not supported in this browser.");
+            }
+        }
+
+        function toggleSpeechRecognition() {
+            if (!recognition) {
+                initSpeechRecognition();
+            }
+
+            if (!recognition) {
+                showToast("Speech recognition is not supported by your browser. Please type your response.", "error");
+                return;
+            }
+
+            if (isRecording) {
+                recognition.stop();
+                stopRecordingState();
+            } else {
+                try {
+                    recognition.start();
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+        }
+
+        function stopRecordingState() {
+            isRecording = false;
+            document.getElementById('recordingBadge').classList.add('hidden');
+            document.getElementById('micBtnText').innerText = "Start Speaking";
+            document.getElementById('micBtn').classList.replace('bg-amber-600', 'bg-rose-600');
+        }
+
+        function evaluateSpeechInput() {
+            const text = document.getElementById('speechTransmittedText').value.trim();
+            if (!text) {
+                showToast("Please provide a spoken or typed response before evaluating.", "error");
+                return;
+            }
+
+            // Keyword analysis for Unit 3 Guide 5
+            const targetKeywords = ["trait", "big five", "ocean", "conscientiousness", "neuroticism", "extraversion", "agreeableness", "openness", "bandura", "self-efficacy", "reinforcement", "observational", "determinism", "heritability", "epigenetics"];
+            const lowerText = text.toLowerCase();
+            const detected = targetKeywords.filter(kw => lowerText.includes(kw));
+
+            // Calculate scores
+            const wordCount = text.split(/\s+/).length;
+            const pronunciationScore = Math.min(100, Math.max(65, Math.floor(75 + Math.random() * 20)));
+            const accuracyScore = Math.min(100, Math.floor((detected.length / 4) * 50 + (wordCount > 15 ? 40 : 20)));
+            const etiquetteScore = Math.min(100, Math.floor(70 + (lowerText.includes("furthermore") || lowerText.includes("in contrast") || lowerText.includes("specifically") ? 25 : 10)));
+
+            // Update Bars
+            document.getElementById('scorePronunciationText').innerText = `${pronunciationScore}%`;
+            document.getElementById('barPronunciation').style.width = `${pronunciationScore}%`;
+
+            document.getElementById('scoreAccuracyText').innerText = `${accuracyScore}%`;
+            document.getElementById('barAccuracy').style.width = `${accuracyScore}%`;
+
+            document.getElementById('scoreEtiquetteText').innerText = `${etiquetteScore}%`;
+            document.getElementById('barEtiquette').style.width = `${etiquetteScore}%`;
+
+            // Display detected keywords
+            const badgeContainer = document.getElementById('keywordBadgeContainer');
+            if (detected.length > 0) {
+                badgeContainer.innerHTML = detected.map(kw => 
+                    `<span class="bg-montanoBlue/10 text-montanoBlue font-bold text-xs px-2.5 py-1 rounded-full border border-montanoBlue/30"><i class="fa-solid fa-check mr-1"></i>${kw}</span>`
+                ).join('');
+            } else {
+                badgeContainer.innerHTML = `<span class="text-xs text-rose-500 font-semibold">No target terms detected. Try using words like 'Big Five', 'Bandura', 'Self-Efficacy', or 'Heritability'.</span>`;
+            }
+
+            // AI Feedback generation
+            let feedback = "";
+            let aiSpeak = "";
+
+            if (accuracyScore >= 75) {
+                feedback = `Outstanding analysis! You successfully integrated terms like ${detected.join(', ')}. Excellent C1 academic vocabulary usage.`;
+                aiSpeak = "Excellent response! You clearly articulated the modern psychological approaches to personality.";
+            } else {
+                feedback = "Good attempt! Make sure to explicitly mention how trait dimensions or social-cognitive beliefs explain personality.";
+                aiSpeak = "Good effort! Try adding specific terms like Conscientiousness, Self-Efficacy, or Heritability to enhance your response.";
+            }
+
+            document.getElementById('aiPedagogicalFeedback').innerText = feedback;
+            document.getElementById('aiResponseText').innerText = `"${aiSpeak}"`;
+            
+            speakText(aiSpeak);
+        }
+
+        function speakAIResponse() {
+            const responseText = document.getElementById('aiResponseText').innerText;
+            speakText(responseText);
+        }
+
+        /* --------------------------------------------------
+           TAB 4: REFLECTION SAVING
+        -------------------------------------------------- */
+        function saveReflections() {
+            const r1 = document.getElementById('refl1').value.trim();
+            const r2 = document.getElementById('refl2').value.trim();
+            const r3 = document.getElementById('refl3').value.trim();
+
+            if (!r1 && !r2 && !r3) {
+                showToast("Please write at least one reflection before saving.", "error");
+                return;
+            }
+
+            showToast("Critical Reflections successfully saved to local portfolio!");
+        }
+
+        /* --------------------------------------------------
+           TAB 5: FORMATIVE EVALUATION RENDERING
+        -------------------------------------------------- */
+        function renderFormativeEvaluation() {
+            const container1 = document.getElementById('evalLevel1Container');
+            const container2 = document.getElementById('evalLevel2Container');
+            const container3 = document.getElementById('evalLevel3Container');
+
+            evaluationExercisesData.forEach(item => {
+                const itemHtml = `
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                            <span class="font-bold text-gray-800 text-sm">
+                                <span class="text-montanoBlue font-extrabold mr-1">Problem ${item.id}.</span> ${item.question}
+                            </span>
+                            <button onclick="toggleSolution(${item.id})" id="solBtn-${item.id}" 
+                                class="text-xs font-bold bg-gray-100 hover:bg-montanoBlue hover:text-white text-gray-700 px-3 py-1.5 rounded-lg transition border border-gray-300 flex items-center gap-1.5 whitespace-nowrap">
+                                <i class="fa-solid fa-eye"></i> <span>Show Solution</span>
+                            </button>
+                        </div>
+                        <div id="solBox-${item.id}" class="hidden bg-emerald-50/70 border-l-4 border-emerald-500 p-3 rounded-r-lg text-xs text-gray-800 space-y-1">
+                            <span class="font-bold text-emerald-800 flex items-center gap-1">
+                                <i class="fa-solid fa-square-check"></i> Step-by-Step Solution & Explanation:
+                            </span>
+                            <p class="text-gray-700">${item.solution}</p>
+                        </div>
+                    </div>
+                `;
+
+                if (item.level === 1) container1.innerHTML += itemHtml;
+                else if (item.level === 2) container2.innerHTML += itemHtml;
+                else if (item.level === 3) container3.innerHTML += itemHtml;
+            });
+        }
+
+        function toggleSolution(id) {
+            const box = document.getElementById(`solBox-${id}`);
+            const btn = document.getElementById(`solBtn-${id}`);
+            const isHidden = box.classList.contains('hidden');
+
+            if (isHidden) {
+                box.classList.remove('hidden');
+                btn.innerHTML = `<i class="fa-solid fa-eye-slash"></i> <span>Hide Solution</span>`;
+                btn.classList.replace('bg-gray-100', 'bg-montanoBlue');
+                btn.classList.add('text-white');
+            } else {
+                box.classList.add('hidden');
+                btn.innerHTML = `<i class="fa-solid fa-eye"></i> <span>Show Solution</span>`;
+                btn.classList.replace('bg-montanoBlue', 'bg-gray-100');
+                btn.classList.remove('text-white');
+            }
+        }
+
+        /* --------------------------------------------------
+           UTILITIES: TOAST NOTIFICATIONS
+        -------------------------------------------------- */
+        function showToast(msg, type = "success") {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMsg.innerText = msg;
+            if (type === "error") {
+                toastIcon.className = "fa-solid fa-triangle-exclamation text-rose-400";
+            } else {
+                toastIcon.className = "fa-solid fa-circle-check text-emerald-400";
+            }
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        /* --------------------------------------------------
+           INITIALIZATION ON WINDOW LOAD
+        -------------------------------------------------- */
+        window.onload = function() {
+            renderSolvedExamples();
+            renderFormativeEvaluation();
+            initSpeechRecognition();
+        };
+    </script>
+</body>
+</html>
